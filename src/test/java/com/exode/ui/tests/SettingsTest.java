@@ -19,6 +19,8 @@ public class SettingsTest {
 
     @Test
     public void saveValidSettingsParameters() {
-        new LoginPage().login();
+        new LoginPage()
+            .login()
+            .navigateToSettingsPage();
     }
 }
