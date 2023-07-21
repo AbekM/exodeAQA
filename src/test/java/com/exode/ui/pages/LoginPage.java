@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 public class LoginPage extends AbstractPage{
 
     public LoginPage() {
-        DriverSingleton.getDriver().get("https://staging.exode.ru/login");
     }
     @FindBy(xpath = "//button[@data-test='auth.login.loginViaEmail']")
     WebElement emailLoginButton;
@@ -17,6 +16,11 @@ public class LoginPage extends AbstractPage{
     WebElement submitButton;
     @FindBy(xpath = "//input[@name='password']")
     WebElement passwordInputField;
+
+    public LoginPage openPage() {
+        DriverSingleton.getDriver().get("https://staging.exode.ru/login");
+        return this;
+    }
 
     public LoginPage clickLoginWithEmailButton() {
         wait.waitUntilClickable(emailLoginButton).click();
@@ -40,5 +44,15 @@ public class LoginPage extends AbstractPage{
     public HomePage clickLogInButton() {
         wait.waitUntilClickable(submitButton).click();
         return new HomePage();
+    }
+
+    public HomePage login() {
+        return new LoginPage()
+            .openPage()
+            .clickLoginWithEmailButton()
+            .inputEmail()
+            .clickSubmitButton()
+            .inputPassword()
+            .clickLogInButton();
     }
 }

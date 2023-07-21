@@ -18,7 +18,7 @@ public class SettingsTest {
     }
 
     @Test
-    public void loginWithValidCredentials() {
-        new LoginPage().clickLoginWithEmailButton().inputEmail().clickSubmitButton().inputPassword().clickLogInButton();
+    public void saveValidSettingsParameters() {
+        new LoginPage().login();
     }
 }
