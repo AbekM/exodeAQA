@@ -1,7 +1,10 @@
 package com.exode.ui.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.security.Key;
 
 public class SettingsPage extends AbstractPage{
 
@@ -21,18 +24,20 @@ public class SettingsPage extends AbstractPage{
     WebElement changePasswordButton;
 
     public SettingsPage inputName(String name) {
-        wait.waitUntilClickable(nameInputField).sendKeys(name);
+        wait.waitUntilClickable(nameInputField).sendKeys(Keys.CONTROL + "A");
+        nameInputField.sendKeys(name);
         return this;
     }
 
     public SettingsPage inputSecondName(String secondName) {
-        wait.waitUntilClickable(lastNameInputField).sendKeys(secondName);
+        wait.waitUntilClickable(lastNameInputField).sendKeys(Keys.CONTROL + "A");
+        lastNameInputField.sendKeys(secondName);
         return this;
     }
 
-    public SettingsPage saveChanges() {
+    public HomePage saveChanges() {
         wait.waitUntilClickable(saveChangesButton).click();
-        return this;
+        return new HomePage();
     }
 
     public SettingsPage changePassword(String password, String confirmPassword) {
@@ -43,6 +48,10 @@ public class SettingsPage extends AbstractPage{
     public SettingsPage saveNewPassword() {
         wait.waitUntilClickable(changePasswordButton).click();
         return this;
+    }
+
+    public boolean buttonActive() {
+        return saveChangesButton.isEnabled();
     }
 
 }
