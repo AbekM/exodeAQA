@@ -3,11 +3,9 @@ package com.exode.ui.tests;
 import com.exode.ui.driver.DriverSingleton;
 import com.exode.ui.pages.LoginPage;
 import com.exode.ui.service.RandomStringGenerator;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class SettingsTest {
@@ -61,23 +59,4 @@ public class SettingsTest {
         Assert.assertNotEquals(fullName.split(" ")[0], randomName);
         Assert.assertNotEquals(fullName.split(" ")[1], randomLastName);
     }
-
-    @Test
-    public void validateSendingTextInChat() {
-        new LoginPage()
-            .openPage()
-            .clickLoginWithEmailButton()
-            .inputEmail()
-            .clickSubmitButton()
-            .inputPassword()
-            .clickLogInButton()
-            .navigateToChatPage()
-            .
-    }
-
-
-    public static void main(String[] args) {
-        System.out.println(RandomStringGenerator.generateRandomString(10));
-    }
-
 }
